@@ -54,10 +54,10 @@ describe("Terminal Component", () => {
       );
     });
 
-    it("should return '/home/satnaing' when user type 'pwd' cmd", async () => {
+    it("should return '/home/mukund' when user type 'pwd' cmd", async () => {
       await user.type(terminalInput, "pwd{enter}");
       expect(screen.getByTestId("latest-output").firstChild?.textContent).toBe(
-        "/home/satnaing"
+        "/home/mukund"
       );
     });
 
@@ -150,7 +150,7 @@ describe("Terminal Component", () => {
       await user.type(terminalInput, "email{enter}");
       expect(window.open).toHaveBeenCalled();
       expect(screen.getByTestId("latest-output").firstChild?.textContent).toBe(
-        "contact@satnaing.dev"
+        "mukund.th04@gmail.com"
       );
     });
 
@@ -201,7 +201,7 @@ describe("Terminal Component", () => {
         const arg = cmd === "themes" ? "go light" : "set 4";
         window.open = vi.fn();
 
-        // firstly run commands correct options
+        // firstly run commands with correct options
         await user.type(terminalInput, `projects go 4{enter}`);
         await user.type(terminalInput, `socials go 4{enter}`);
         await user.type(terminalInput, `themes set espresso{enter}`);
