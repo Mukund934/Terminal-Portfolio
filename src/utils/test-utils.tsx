@@ -11,8 +11,7 @@ const customRender = (ui: ReactElement, options?: RenderOptions) => {
   let rendered;
   act(() => {
     rendered = render(ui, {
-      // Wrap providers if needed
-      wrapper: ({ children }) => children,
+      wrapper: ({ children }) => <>{children}</>,
       ...options,
     });
   });
@@ -21,4 +20,5 @@ const customRender = (ui: ReactElement, options?: RenderOptions) => {
 
 export * from "@testing-library/react";
 export { default as userEvent } from "@testing-library/user-event";
+// Override render export
 export { customRender as render };
