@@ -3,12 +3,13 @@ import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
 import { render, screen, userEvent } from "../utils/test-utils";
 import Terminal, { commands } from "../components/Terminal";
 
-// setup function
+// setup function: explicitly cast render result as an object
 function setup(jsx: JSX.Element) {
-  return {
-    user: userEvent.setup(),
-    ...render(jsx),
-  };
+  const renderResult = render(jsx);
+  return { user: userEvent.setup(), ...renderResult } as Record<
+    string,
+    unknown
+  >;
 }
 
 const allCmds = commands.map(cmdObj => cmdObj.cmd);
@@ -19,8 +20,8 @@ describe("Terminal Component", () => {
 
   beforeEach(() => {
     const termSetup = setup(<Terminal />);
-    user = termSetup.user;
-    terminalInput = screen.getByTitle("terminal-input");
+    user = termSetup.user as UserEvent;
+    terminalInput = screen.getByTitle("terminal-input") as HTMLInputElement;
   });
 
   describe("Input Features & Initial State", () => {
@@ -65,13 +66,13 @@ describe("Terminal Component", () => {
       await user.type(terminalInput, "whoami{enter}");
       await user.type(terminalInput, "history{enter}");
 
-      const commands =
+      const commandsNodes =
         screen.getByTestId("latest-output").firstChild?.childNodes;
 
-      expect(commands?.length).toBe(3);
+      expect(commandsNodes?.length).toBe(3);
 
       const typedCommands: string[] = [];
-      commands?.forEach(cmd => {
+      commandsNodes?.forEach(cmd => {
         typedCommands.push(cmd.textContent || "");
       });
 
@@ -209,8 +210,6 @@ describe("Terminal Component", () => {
         // then run cmd with incorrect options
         await user.type(terminalInput, `${cmd} ${arg}{enter}`);
         expect(window.open).toBeCalledTimes(2);
-
-        // TODO: Test theme change
       });
     });
   });
