@@ -41,6 +41,8 @@ export const commands: Command = [
   { cmd: "themes", desc: "check available themes", tab: 7 },
   { cmd: "welcome", desc: "display hero section", tab: 6 },
   { cmd: "whoami", desc: "about current user", tab: 7 },
+  { cmd: "exit", desc: "exit the terminal", tab: 8 },
+  { cmd: "date", desc: "show the current date", tab: 8 },
 ];
 
 type Term = {
@@ -90,7 +92,7 @@ const Terminal = () => {
     setHints([]);
   };
 
-  // focus on input when terminal is clicked
+  // Focus on input when terminal is clicked
   const handleDivClick = () => {
     inputRef.current && inputRef.current.focus();
   };
@@ -122,7 +124,7 @@ const Terminal = () => {
       const returnedHints = argTab(inputVal, setInputVal, setHints, hintsCmds);
       hintsCmds = returnedHints ? [...hintsCmds, ...returnedHints] : hintsCmds;
 
-      // if there are many command to autocomplete
+      // if there are many commands to autocomplete
       if (hintsCmds.length > 1) {
         setHints(hintsCmds);
       }
@@ -134,7 +136,6 @@ const Terminal = () => {
             ? `${currentCmd[0]} ${currentCmd[1]} ${hintsCmds[0]}`
             : hintsCmds[0]
         );
-
         setHints([]);
       }
     }
@@ -147,7 +148,6 @@ const Terminal = () => {
     // Go previous cmd
     if (e.key === "ArrowUp") {
       if (pointer >= cmdHistory.length) return;
-
       if (pointer + 1 === cmdHistory.length) return;
 
       setInputVal(cmdHistory[pointer + 1]);
@@ -158,13 +158,11 @@ const Terminal = () => {
     // Go next cmd
     if (e.key === "ArrowDown") {
       if (pointer < 0) return;
-
       if (pointer === 0) {
         setInputVal("");
         setPointer(-1);
         return;
       }
-
       setInputVal(cmdHistory[pointer - 1]);
       setPointer(prevState => prevState - 1);
       inputRef?.current?.blur();

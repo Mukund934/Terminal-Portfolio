@@ -3,7 +3,7 @@ import { User, WebsiteName, Wrapper } from "./styles/TerminalInfo.styled";
 const TermInfo = () => {
   return (
     <Wrapper>
-      <User>mukund</User>@<WebsiteName>terminal.mukund.dev</WebsiteName>:~$
+      <User>visitor</User>@<WebsiteName>terminal.mukund.dev</WebsiteName>:~$
     </Wrapper>
   );
 };
