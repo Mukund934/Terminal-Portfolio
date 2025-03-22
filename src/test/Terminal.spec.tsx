@@ -3,13 +3,10 @@ import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
 import { render, screen, userEvent } from "../utils/test-utils";
 import Terminal, { commands } from "../components/Terminal";
 
-// setup function: explicitly cast render result as an object
+// setup function: cast the spread result as an object to satisfy TypeScript
 function setup(jsx: JSX.Element) {
-  const renderResult = render(jsx);
-  return { user: userEvent.setup(), ...renderResult } as Record<
-    string,
-    unknown
-  >;
+  const result = render(jsx);
+  return { user: userEvent.setup(), ...result } as Record<string, unknown>;
 }
 
 const allCmds = commands.map(cmdObj => cmdObj.cmd);
@@ -202,7 +199,7 @@ describe("Terminal Component", () => {
         const arg = cmd === "themes" ? "go light" : "set 4";
         window.open = vi.fn();
 
-        // firstly run commands with correct options
+        // first run commands with correct options
         await user.type(terminalInput, `projects go 4{enter}`);
         await user.type(terminalInput, `socials go 4{enter}`);
         await user.type(terminalInput, `themes set espresso{enter}`);
