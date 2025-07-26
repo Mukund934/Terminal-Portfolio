@@ -40,10 +40,12 @@ export const checkThemeSwitch = (
   currentCommand.length === 3 &&
   _.includes(themes, currentCommand[2]);
 
+// ✅ Updated argTab with 4th param: hintsCmds
 export const argTab = (
   inputVal: string,
   setInputVal: (value: React.SetStateAction<string>) => void,
-  setHints: (value: React.SetStateAction<string[]>) => void
+  setHints: (value: React.SetStateAction<string[]>) => void,
+  hintsCmds: string[] = []
 ): string[] | undefined => {
   const words = inputVal.trim().split(" ");
   const [cmd, arg1, arg2] = words;
@@ -59,8 +61,9 @@ export const argTab = (
   }
 
   if (inputVal === "themes set ") {
-    setHints(Object.keys(theme));
-    return [];
+    const themeNames = Object.keys(theme);
+    setHints(themeNames);
+    return themeNames;
   }
 
   if (cmd === "themes" && arg1 === "set" && arg2) {
