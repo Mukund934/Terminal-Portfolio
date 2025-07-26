@@ -22,3 +22,11 @@ export const ProjectDesc = styled.div`
   line-height: 1.5rem;
   max-width: 500px;
 `;
+
+export const ProjectStack = styled.div`
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 0.3rem;
+  color: ${({ theme }) => theme.colors?.text[300]};
+`;
+
