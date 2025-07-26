@@ -81,7 +81,7 @@ This ASCII banner sets the tone for a personal and geeky terminal experience.
 
 ## 🚀 Live Project
 
-🔗 [Visit Terminal Portfolio →](https://terminal-portfolio-git-main-mukund-thakurs-projects.vercel.app/)
+🔗 [Visit Terminal Portfolio →](https://terminal-portfolio-rust-phi.vercel.app/)
 
 ---
 
