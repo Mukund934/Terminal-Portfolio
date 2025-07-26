@@ -44,8 +44,8 @@ export const argTab = (
   inputVal: string,
   setInputVal: (value: React.SetStateAction<string>) => void,
   setHints: (value: React.SetStateAction<string[]>) => void
-  
-  hintsCmds: string[]
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // hintsCmds: string[]
 ): string[] | undefined => {
   const words = inputVal.trim().split(" ");
   const [cmd, arg1, arg2] = words;
@@ -93,19 +93,13 @@ export const argTab = (
       "9. Paytm-Clone",
       "10. Dukaan-UI-frontend",
       "11. Simple-Todo-Application",
-      "12. Cryptex-Console"
+      "12. Cryptex-Console",
     ];
   }
 
   if (inputVal === "socials go ") {
-    return [
-      "1. Github",
-      "2. Dev.to",
-      "3. Facebook",
-      "4. Instagram"
-    ];
+    return ["1. Github", "2. Dev.to", "3. Facebook", "4. Instagram"];
   }
 
   return;
 };
-
