@@ -7,6 +7,7 @@ import {
 import {
   ProjectContainer,
   ProjectDesc,
+  ProjectStack,
   ProjectsIntro,
   ProjectTitle,
 } from "../styles/Projects.styled";
@@ -16,23 +17,24 @@ import Usage from "../Usage";
 const Projects: React.FC = () => {
   const { arg, history, rerender } = useContext(termContext);
 
-  /* ===== get current command ===== */
+  // ===== get current command =====
   const currentCommand = getCurrentCmdArry(history);
 
-  /* ===== check current command is redirect ===== */
+  // ===== handle redirection to external URLs =====
   useEffect(() => {
     if (checkRedirect(rerender, currentCommand, "projects")) {
       projects.forEach(({ id, url }) => {
-        id === parseInt(arg[1]) && window.open(url, "_blank");
+        if (id === parseInt(arg[1])) {
+          window.open(url, "_blank");
+        }
       });
     }
   }, [arg, rerender, currentCommand]);
 
-  /* ===== check arg is valid ===== */
+  // ===== validate argument =====
+  const validArgs = projects.map(p => String(p.id));
   const checkArg = () =>
-    isArgInvalid(arg, "go", ["1", "2", "3", "4"]) ? (
-      <Usage cmd="projects" />
-    ) : null;
+    isArgInvalid(arg, "go", validArgs) ? <Usage cmd="projects" /> : null;
 
   return arg.length > 0 || arg.length > 2 ? (
     checkArg()
@@ -42,10 +44,11 @@ const Projects: React.FC = () => {
         “Talk is cheap. Show me the code”? I got you. <br />
         Here are some of my projects you shouldn't miss.
       </ProjectsIntro>
-      {projects.map(({ id, title, desc }) => (
+      {projects.map(({ id, title, desc, techStack }) => (
         <ProjectContainer key={id}>
           <ProjectTitle>{`${id}. ${title}`}</ProjectTitle>
           <ProjectDesc>{desc}</ProjectDesc>
+          <ProjectStack>Tech Stack: {techStack}</ProjectStack>
         </ProjectContainer>
       ))}
       <Usage cmd="projects" marginY />
@@ -136,7 +139,6 @@ const projects = [
     url: "https://github.com/Mukund934/Simple-Todo-Application",
     techStack: "React, Node.js, Express.js, MongoDB, JWT, Mongoose, Vite",
   },
-
   {
     id: 12,
     title: "Cryptex Console – Real-Time Crypto Dashboard",
@@ -148,3 +150,4 @@ const projects = [
 ];
 
 export default Projects;
+
