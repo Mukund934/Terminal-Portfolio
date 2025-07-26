@@ -102,11 +102,11 @@ const projects = [
   },
   {
     id: 7,
-    title: "Cryptex Console – Real-Time Crypto Dashboard",
-    desc: "A futuristic, high-performance crypto dashboard with live charts, ETH gas tracking, portfolio visuals, and market stats. Built using Bun, Vite, Tailwind CSS, and TradingView/Chart.js widgets.",
-    url: "https://github.com/Mukund934/Cryptex-Console/",
+    title: "BRT Bus Service – Real-Time Campus Transit System",
+    desc: "Live-tracked buses for 300+ users using the HTML5 Geolocation API and WebSockets, streaming GPS data every 5s to a Node.js backend on Render. Built a mobile-first UI with maps, fare tables, and real-time timetables—cutting wait-time queries by 40%. Designed for on-campus deployment with continuous feedback-based upgrades.",
+    url: "https://github.com/Mukund934/BRT-Bus-Service",
     techStack:
-      "React, Tailwind CSS, Vite, Bun, Chart.js, TradingView Widget, CoinGecko API",
+      "HTML, CSS, JavaScript, Geolocation API, WebSockets, Node.js, Render",
   },
   {
     id: 8,
@@ -126,23 +126,24 @@ const projects = [
     id: 10,
     title: "Dukaan UI Frontend – Business Dashboard UI",
     desc: "A pixel-perfect, responsive admin dashboard inspired by Dukaan. Features reusable components like cards, tables, navigation sidebar, and transaction panels. Built with React, Vite, and Tailwind CSS for a clean, modular design.",
-    url: "https://dukaan-ui-frontend-one.vercel.app/",
+    url: "https://github.com/Mukund934/Dukaan-UI-frontend",
     techStack: "React, Vite, Tailwind CSS, CSS Modules",
   },
   {
     id: 11,
     title: "Simple Todo App – Full-Stack Task Manager",
     desc: "A clean, responsive full-stack Todo application with JWT-secured authentication. Users can register, log in, manage personal tasks, mark them complete, and track progress. Ideal for productivity and backend practice.",
-    url: "https://simple-todo-application-navy.vercel.app/",
+    url: "https://github.com/Mukund934/Simple-Todo-Application",
     techStack: "React, Node.js, Express.js, MongoDB, JWT, Mongoose, Vite",
   },
+
   {
     id: 12,
-    title: "BRTS Bus Service – Real-Time Campus Transit System",
-    desc: "Live-tracked buses for 300+ users using the HTML5 Geolocation API and WebSockets, streaming GPS data every 5s to a Node.js backend on Render. Built a mobile-first UI with maps, fare tables, and real-time timetables—cutting wait-time queries by 40%. Designed for on-campus deployment with continuous feedback-based upgrades.",
-    url: "https://brts-bus-tracking.vercel.app/",
+    title: "Cryptex Console – Real-Time Crypto Dashboard",
+    desc: "A futuristic, high-performance crypto dashboard with live charts, ETH gas tracking, portfolio visuals, and market stats. Built using Bun, Vite, Tailwind CSS, and TradingView/Chart.js widgets.",
+    url: "https://github.com/Mukund934/Cryptex-Console/",
     techStack:
-      "HTML, CSS, JavaScript, Geolocation API, WebSockets, Node.js, Render",
+      "React, Tailwind CSS, Vite, Bun, Chart.js, TradingView Widget, CoinGecko API",
   },
 ];
 
