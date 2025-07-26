@@ -44,8 +44,6 @@ export const argTab = (
   inputVal: string,
   setInputVal: (value: React.SetStateAction<string>) => void,
   setHints: (value: React.SetStateAction<string[]>) => void
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // hintsCmds: string[]
 ): string[] | undefined => {
   const words = inputVal.trim().split(" ");
   const [cmd, arg1, arg2] = words;
